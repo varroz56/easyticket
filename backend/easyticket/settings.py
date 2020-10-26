@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',  # Using Djoser as the authentication system ## https://djoser.readthedocs.io/en/latest/introduction.html
     'accounts',
+    'marketing',
 ]
 
 MIDDLEWARE = [
