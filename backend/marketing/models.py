@@ -37,7 +37,7 @@ class ContactUsMessage(models.Model):
         end = str(self.id)
         prefix = "CUF"
         # in the case of over 9999999 insatnces
-        if (self.id > 9999999):
+        if self.id > 9999999:
             # backup prefix and the end will roll back to start
             # from 1
             prefix = "FUC"
@@ -46,7 +46,7 @@ class ContactUsMessage(models.Model):
         # fill with 0s while get the required length
         num = len(end)
         mid = ""
-        while(num < 7):
+        while num < 7:
             mid += "0"
             num += 1
         # set ref from the required tags
