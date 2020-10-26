@@ -38,12 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # Django Rest Framework ## https://www.django-rest-framework.org
-    # To fix TypeError: Abstract base class containing model fields not permitted for proxy model 'TokenProxy'.
+    'rest_framework',  # Django Rest Framework
+    # https://www.django-rest-framework.org
+    # To fix TypeError: Abstract base class containing model fields not
+    # permitted
+    # for proxy model 'TokenProxy'.
     'rest_framework.authtoken',
-    'djoser',  # Using Djoser as the authentication system ## https://djoser.readthedocs.io/en/latest/introduction.html
+    'djoser',  # Using Djoser as the authentication system
+    # https://djoser.readthedocs.io/en/latest/introduction.html
+    # Summernote
+    'django_summernote',
+    # Own apps:
     'accounts',
     'marketing',
+    'howtos',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +140,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Rest Framework, JWT, Djoser
 # Rest framework requires to set permission classes,
 # as using JWT for authentication(supported by rest framework)
@@ -204,3 +213,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get("ET_EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("ET_EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
+
+
+# Summernote to set bootstrap 4 theme
+SUMMERNOTE_THEME = 'bs4'

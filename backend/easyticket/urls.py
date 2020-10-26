@@ -23,6 +23,8 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     # include marketing urls as info
     path('api/info/', include('marketing.urls')),
+    # Summernote
+    path('summernote/', include('django_summernote.urls')),
 
     path('admin/', admin.site.urls),
 ]
