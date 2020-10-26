@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',  # Django Rest Framework ## https://www.django-rest-framework.org
+    # To fix TypeError: Abstract base class containing model fields not permitted for proxy model 'TokenProxy'.
+    'rest_framework.authtoken',
+    'djoser',  # Using Djoser as the authentication system ## https://djoser.readthedocs.io/en/latest/introduction.html
 ]
 
 MIDDLEWARE = [
@@ -70,6 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'easyticket.wsgi.application'
 
 
+SITE_ID = 1
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -122,3 +127,64 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Rest Framework, JWT, Djoser
+# Rest framework requires to set permission classes,
+# as using JWT for authentication(supported by rest framework)
+# it is mandatory to set as auth class
+REST_FRAMEWORK = {
+    'DEAFULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+# JWT
+# this is to set JWT in headers
+# https://www.django-rest-framework.org/api-guide/authentication/#json-web-token-authentication
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+}
+
+# Djoser
+# https://djoser.readthedocs.io/en/latest/
+# https://djoser.readthedocs.io/en/latest/settings.html
+# This is to customize Djoser authentication classes
+# Some are to set the fields and some to set the endpoints or serializer routes
+DJOSER = {
+    # This is to use email as username
+    'LOGIN_FIELD': 'email',
+    # When registering, user needs to confirm the password
+    'USER_CREATE_PASSWORD_RETYPE': True,
+
+    # Upon registering a an activation email will be sent
+    'SEND_ACTIVATION_EMAIL': True,
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+
+    # Upon registration or activation a confirmation email will be sent
+    'SEND_CONFIRMATION_EMAIL': True,
+
+    # Upon activation will need to re-enter the username and password
+    'SET_USERNAME_RETYPE': True,
+    'SET_PASSWORD_RETYPE': True,
+
+    # Upon changing username send a confirmation email
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    # Upon changing password send a confirmation email
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+
+    # When User resets password or username, a confirmation email will be sent
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
+
+    # Want user to logout on Password change
+    'LOGOUT_ON_PASSWORD_CHANGE': True,
+    # https://djoser.readthedocs.io/en/latest/settings.html#serializers
+    # As will use custom user model from the accounts app:
+    # 'SERIALIZERS': {
+    #     'user_create': 'accounts.serializers.UserProfileCreateSerializer',
+    #     'user': 'accounts.serializers.UserProfileCreateSerializer',
+    #     'user_delete': 'djoser.serializers.UserDeleteSerializer',
+    # },
+}
