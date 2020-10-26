@@ -188,3 +188,5 @@ DJOSER = {
     #     'user_delete': 'djoser.serializers.UserDeleteSerializer',
     # },
 }
+# Define the custom usermodel as default
+AUTH_USER_MODEL = 'accounts.UserProfile'
