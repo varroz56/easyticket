@@ -73,10 +73,14 @@ WSGI_APPLICATION = 'easyticket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# Defined PostgreSQL database as default
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("ET_BD_NAME"),
+        'USER': os.environ.get("ET_POSTGRES_USER"),
+        'PASSWORD': os.environ.get("ET_POSTGRES_PASS"),
+        'HOST': 'localhost'
     }
 }
 
