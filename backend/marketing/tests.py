@@ -8,7 +8,7 @@ from rest_framework.test import APITestCase
 from .models import Contact, ContactUsMessage
 
 
-class ContactTests(APITestCase):
+class ContactViewsTests(APITestCase):
 
     def test_create_contact(self):
         """
