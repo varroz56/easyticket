@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # To fix TypeError: Abstract base class containing model fields not permitted for proxy model 'TokenProxy'.
     'rest_framework.authtoken',
     'djoser',  # Using Djoser as the authentication system ## https://djoser.readthedocs.io/en/latest/introduction.html
+    'accounts',
 ]
 
 MIDDLEWARE = [
