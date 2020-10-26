@@ -182,11 +182,11 @@ DJOSER = {
     'LOGOUT_ON_PASSWORD_CHANGE': True,
     # https://djoser.readthedocs.io/en/latest/settings.html#serializers
     # As will use custom user model from the accounts app:
-    # 'SERIALIZERS': {
-    #     'user_create': 'accounts.serializers.UserProfileCreateSerializer',
-    #     'user': 'accounts.serializers.UserProfileCreateSerializer',
-    #     'user_delete': 'djoser.serializers.UserDeleteSerializer',
-    # },
+    'SERIALIZERS': {
+        'user_create': 'accounts.serializers.UserProfileCreateSerializer',
+        'user': 'accounts.serializers.UserProfileCreateSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+    },
 }
 # Define the custom usermodel as default
 AUTH_USER_MODEL = 'accounts.UserProfile'
