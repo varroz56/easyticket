@@ -1,11 +1,8 @@
 # https://www.django-rest-framework.org/api-guide/testing/
-import json
-
-from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from .models import Contact, ContactUsMessage
+from .models import Contact
 
 
 class ContactViewsTests(APITestCase):
@@ -28,7 +25,8 @@ class ContactViewsTests(APITestCase):
         self.assertEqual(Contact.objects.get().first_name, 'Bilbo')
 
     def test_that_not_creating_duplicate_contact(self):
-        """ If a contact deatils posted twice this should return 302 found instead of created"""
+        """ If a contact deatils posted twice this should return 302 found
+            instead of created """
         url = '/api/info/create-contact/'
         data = {
             "first_name": "Bilbo",
@@ -46,7 +44,7 @@ class ContactViewsTests(APITestCase):
 class ContactUsMessageTests(APITestCase):
     """ This is to test message creation and send message methods"""
 
-    def test_that_message_send_fails_if_message_instance_could_not_be_created(self):
+    def test_that_message_send_fails_if_message_instance_not_be_created(self):
         """ This is to test if view fails because message was not created"""
         url = '/api/info/create-message/'
         data = {

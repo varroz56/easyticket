@@ -28,7 +28,8 @@ class ContactUsMessage(models.Model):
     reference = models.CharField(max_length=10, null=True, blank=True)
     # Create custom save method to add reference
     # refernce is limited to 9999999 any more instance created after this
-    # it will add a backup prefix and have another 9999999 instance time to prepare
+    # it will add a backup prefix and have another 9999999
+    # instance time to prepare
     # with a better soultion
     # This is to have a consistent and limited length of reference numbers
 
