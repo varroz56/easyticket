@@ -217,3 +217,6 @@ EMAIL_USE_TLS = True
 
 # Summernote to set bootstrap 4 theme
 SUMMERNOTE_THEME = 'bs4'
+
+# To fix https://support.mozilla.org/en-US/kb/xframe-neterror-page?as=u&utm_source=inproduct
+X_FRAME_OPTIONS = 'SAMEORIGIN'
