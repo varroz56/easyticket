@@ -16,4 +16,4 @@ class ShippingAddress(models.Model):
         verbose_name_plural = "Shipping Adresses"
 
     def __str__(self):
-        return self.user
+        return self.user.email

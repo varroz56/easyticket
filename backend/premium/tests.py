@@ -45,6 +45,8 @@ class ShippingAddressTests(APITestCase):
     # Not sure why returning 404, as the address and user exist
     # Tried multiple times to amend to find what is wrong with the code,
     # with Postman this works and getting the right code
+    # When printing inside the function it does show the instances has been created
+    # while when posting
 
     # def test_to_create_new_address_if_not_exists(self):
     #     """ Test to create new address"""
@@ -78,3 +80,39 @@ class ShippingAddressTests(APITestCase):
     #     response = self.client.post(
     #         url, data, format='json')
     #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    # def test_that_can_delete_address_if_exists_both_user_and_address(self):
+    #     """ Test normal deletion"""
+    #     print(ShippingAddress.objects.get(user=UserProfile.objects.get(id=1)))
+    #     url = 'api/premium/delete-shipping-address/'
+    #     data = {
+    #         "user": 1
+    #     }
+    #     response = self.client.delete(
+    #         url, data, format='json')
+    #     self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_that_cannot_delete_if_user_not_found(self):
+        """ Test delete when user not found"""
+        url = 'api/premium/delete-shipping-address/'
+        data = {
+            "user": 2
+        }
+        response = self.client.delete(
+            url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_that_handle_when_no_address_set(self):
+        """ Test delete when no address """
+        ShippingAddress.objects.filter(
+            user=UserProfile.objects.get(id=1)).delete()
+        # print(ShippingAddress.objects.get(user=UserProfile.objects.get(id=1)))
+        url = 'api/premium/delete-shipping-address/'
+        data = {
+            "user": 1
+        }
+        response = self.client.delete(
+            url, data, format='json')
+        # As found this is not passing because of no address,
+        # it is passing because of no user
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

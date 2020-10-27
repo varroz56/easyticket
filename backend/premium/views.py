@@ -3,6 +3,8 @@
 from rest_framework import permissions, status
 # generic APIView from rest
 from rest_framework.views import APIView
+# to be able to handle delete
+from rest_framework.generics import DestroyAPIView
 # HTTP response to handle view exits
 from rest_framework.response import Response
 # import our models
@@ -11,7 +13,7 @@ from accounts.models import UserProfile
 
 
 class ShippingAddressCRUDView(APIView):
-    """ This view handles CRUD on the shipping address
+    """ This view handles Create Read and Update on the shipping address
         Customer can always change or delete this, however, for purchase,
         this needs to be entered if not exists and the address will be
         stored along the purchase details, what cannot be deleted
@@ -20,6 +22,7 @@ class ShippingAddressCRUDView(APIView):
     # At the moment it allows everybody,
     # in production this needs to be authenticated
     permission_classes = (permissions.AllowAny,)
+    # CREATE AND UPDATE
 
     def post(self, request):
         # using the data came with the request
@@ -56,3 +59,34 @@ class ShippingAddressCRUDView(APIView):
             country=data['country'])
         content = {'success', 'Address has been updated'}
         return Response(content, status=status.HTTP_200_OK)
+
+        # DELETE
+
+
+class ShippingAddressDeletView(DestroyAPIView):
+    """ This view to handle instance deletion
+        It will exit if no user, no address or 
+        when the instance deleted
+    """
+    permission_classes = (permissions.AllowAny,)
+
+    def delete(self, request):
+        # using the data came with the request
+        data = self.request.data
+
+        # try to find user if not found error
+        user = UserProfile.objects.filter(id=data['user'])
+        if not user:
+            content = {'error', 'User not found'}
+            return Response(content, status=status.HTTP_404_NOT_FOUND)
+        user = UserProfile.objects.get(id=data['user'])
+
+        address = ShippingAddress.objects.filter(user=data['user'])
+        if not address:
+            content = {
+                'info', 'No Address has been saved yet, unable to delete'}
+            return Response(content, status=status.HTTP_404_NOT_FOUND)
+        ShippingAddress.objects.get(user=data['user']).delete()
+        content = {
+            'success', 'Address has been deleted'}
+        return Response(content, status=status.HTTP_204_NO_CONTENT)
