@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'accounts',
     'marketing',
     'howtos',
+    'premium',
 ]
 
 MIDDLEWARE = [

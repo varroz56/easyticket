@@ -25,6 +25,7 @@ urlpatterns = [
     path('api/info/', include('marketing.urls')),
     # Summernote
     path('summernote/', include('django_summernote.urls')),
-
+    # include premium urls
+    path('api/premium/', include('premium.urls')),
     path('admin/', admin.site.urls),
 ]
