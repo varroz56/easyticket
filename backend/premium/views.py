@@ -1,17 +1,20 @@
 import json
+
+from accounts.models import UserProfile
 # User will need to be authneticated in
 # order to make changes to the shipping address
 from rest_framework import permissions, status
-# generic APIView from rest
-from rest_framework.views import APIView
 # to be able to handle delete
-from rest_framework.generics import DestroyAPIView, RetrieveAPIView
+from rest_framework.generics import (
+    DestroyAPIView, ListAPIView, RetrieveAPIView)
 # HTTP response to handle view exits
 from rest_framework.response import Response
+# generic APIView from rest
+from rest_framework.views import APIView
+
 # import our models
-from .models import ShippingAddress
-from .serilaizers import ShippingAddressSerializer
-from accounts.models import UserProfile
+from .models import PremiumPackage, ShippingAddress
+from .serilaizers import PremiumPackageSerializer, ShippingAddressSerializer
 
 
 class ShippingAddressCRUDView(APIView):
@@ -119,3 +122,35 @@ class ShippingAddressDeletView(DestroyAPIView):
         content = {
             'success', 'Address has been deleted'}
         return Response(content, status=status.HTTP_204_NO_CONTENT)
+
+
+class PremiumPackageListView(ListAPIView):
+    """ This view will present the list of premiumpackages """
+    permission_classes = (permissions.AllowAny,)
+    queryset = PremiumPackage.objects.order_by('price')
+    serializer_class = PremiumPackageSerializer
+
+
+class PremiumPackageCreateView(APIView):
+    """ This view will present the list of premiumpackages """
+
+    def post(self, request):
+        # using the data came with the request
+        data = self.request.data
+        try:
+            p = PremiumPackage(
+                name=data['name'],
+                sub_name=data['sub_name'],
+                short_description=data['short_description'],
+                description=data['description'],
+                valid_for_days=data['valid_for_days'],
+                price=data['price']
+            )
+            p.save()
+            content = {
+                'success', 'Premium Package has been created'}
+            return Response(content, status=status.HTTP_201_CREATED)
+        except:
+            content = {
+                'error', 'Premium Package could not be created'}
+            return Response(content, status=status.HTTP_400_BAD_REQUEST)
