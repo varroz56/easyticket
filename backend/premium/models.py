@@ -31,28 +31,29 @@ class PremiumPackage(models.Model):
         # more effective in this case
         ppackages = PremiumPackage.objects.filter(slug__startswith=myslug)
         if ppackages:
-            n = 1
-            while n < len(ppackages)+1:
+            num = 1
+            while num < len(ppackages)+1:
                 # print(
-                #     "going through all packages with same slug start.." + str(n) + "st/th time(s)")
+                #     "going through all packages with same slug start.."
+                # + str(n) + "st/th time(s)")
                 is_unique = True
                 while is_unique:
-                    for p in ppackages:
-                        myslug = slugify(self.name+"-"+str(n))
-                        p.slug
+                    for pkg in ppackages:
+                        myslug = slugify(self.name+"-"+str(num))
                         # print("My slug : " +
                         #       myslug+" Comparing to: " + p.slug)
-                        if myslug == p.slug:
+                        if myslug == pkg.slug:
                             # print(myslug +
-                            #       " is not unique as it is equal to: " + p.slug)
+                            #       " is not unique as it is equal to:"+
+                            #   + p.slug)
                             is_unique = False
-                            n += 1
+                            num += 1
                     if is_unique:
                         PremiumPackage.objects.filter(
                             id=self.id).update(slug=myslug)
                         # print("Set instance slug to: " + myslug)
                         is_unique = False
-                        n = len(ppackages)+1
+                        num = len(ppackages)+1
         else:
             PremiumPackage.objects.filter(id=self.id).update(slug=myslug)
             # print("Default slug is unique, set instance slug to: " + myslug)

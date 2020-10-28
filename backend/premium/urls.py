@@ -1,7 +1,8 @@
 from django.urls import path
 
 from .views import (ShippingAddressCRUDView, ShippingAddressDeletView,
-                    ShippingAddressReadView, PremiumPackageListView, PremiumPackageCreateView)
+                    ShippingAddressReadView, PremiumPackageListView,
+                    PremiumPackageCreateView)
 
 urlpatterns = [
     path('manage-shipping-address/', ShippingAddressCRUDView.as_view()),

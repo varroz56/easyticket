@@ -45,7 +45,8 @@ class ShippingAddressTests(APITestCase):
     # Not sure why returning 404, as the address and user exist
     # Tried multiple times to amend to find what is wrong with the code,
     # with Postman this works and getting the right code
-    # When printing inside the function it does show the instances has been created
+    # When printing inside the function it does
+    # show the instances has been created
     # while when posting
 
     # def test_to_create_new_address_if_not_exists(self):
@@ -136,8 +137,8 @@ class PremiumPackageTests(APITestCase):
 
     def test_that_slug_is_created(self):
         """ This is to test if slug is created for instance """
-        p1 = PremiumPackage.objects.get(name="30 day")
-        self.assertEqual(p1.slug, "30-day")
+        package1 = PremiumPackage.objects.get(name="30 day")
+        self.assertEqual(package1.slug, "30-day")
 
     def setUp(self):
         # Create and instance with number at the end
@@ -161,12 +162,12 @@ class PremiumPackageTests(APITestCase):
 
     def test_that_resolves_when_prev_slug_same_as_current_name(self):
         """ This is to test if a given name equals to an existing slug"""
-        p1 = PremiumPackage.objects.get(name="30 day 2")
-        p2 = PremiumPackage.objects.get(name="30 day-2")
-        self.assertNotEqual(p1.slug, p2.slug)
+        package1 = PremiumPackage.objects.get(name="30 day 2")
+        package2 = PremiumPackage.objects.get(name="30 day-2")
+        self.assertNotEqual(package1.slug, package2.slug)
 
     def test_that_every_available_slug_used(self):
-        """ This is to test that if a higher number was used as slug the 
+        """ This is to test that if a higher number was used as slug the
             unused numbers are still be used """
         # Create and instance with number at the end
         PremiumPackage.objects.create(
@@ -186,6 +187,6 @@ class PremiumPackageTests(APITestCase):
             valid_for_days=30,
             price=15
         )
-        p1 = PremiumPackage.objects.get(id=5)
-        self.assertEqual(p1.sub_name, "test sub name number 5")
-        self.assertEqual(p1.slug, "30-day-1")
+        package1 = PremiumPackage.objects.get(id=5)
+        self.assertEqual(package1.sub_name, "test sub name number 5")
+        self.assertEqual(package1.slug, "30-day-1")
