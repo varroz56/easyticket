@@ -221,3 +221,10 @@ SUMMERNOTE_THEME = 'bs4'
 
 # To fix https://support.mozilla.org/en-US/kb/xframe-neterror-page?as=u&utm_source=inproduct
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# Stripe secrets
+STRIPE_SK = os.environ.get("STRIPE_SECRET_KEY")
+STRIPE_PK = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+
+# for testing stripe
+API_URL = os.environ.get("REACT_APP_API_URL")
