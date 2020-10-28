@@ -2,7 +2,7 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 from accounts.models import UserProfile
-from .models import ShippingAddress
+from .models import ShippingAddress, PremiumPackage
 
 
 class ShippingAddressTests(APITestCase):
@@ -116,3 +116,76 @@ class ShippingAddressTests(APITestCase):
         # As found this is not passing because of no address,
         # it is passing because of no user
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+class PremiumPackageTests(APITestCase):
+    """ This is to test the premium package methods"""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        # create first instance
+        PremiumPackage.objects.create(
+            name="30 day",
+            sub_name="test sub name",
+            short_description="test short desc",
+            description="test desc",
+            valid_for_days=30,
+            price=15
+        )
+
+    def test_that_slug_is_created(self):
+        """ This is to test if slug is created for instance """
+        p1 = PremiumPackage.objects.get(name="30 day")
+        self.assertEqual(p1.slug, "30-day")
+
+    def setUp(self):
+        # Create and instance with number at the end
+        PremiumPackage.objects.create(
+            name="30 day 2",
+            sub_name="test sub name",
+            short_description="test short desc",
+            description="test desc",
+            valid_for_days=30,
+            price=15
+        )
+        # Create an instance with same number at the end but with "-"
+        PremiumPackage.objects.create(
+            name="30 day-2",
+            sub_name="test sub name",
+            short_description="test short desc",
+            description="test desc",
+            valid_for_days=30,
+            price=15
+        )
+
+    def test_that_resolves_when_prev_slug_same_as_current_name(self):
+        """ This is to test if a given name equals to an existing slug"""
+        p1 = PremiumPackage.objects.get(name="30 day 2")
+        p2 = PremiumPackage.objects.get(name="30 day-2")
+        self.assertNotEqual(p1.slug, p2.slug)
+
+    def test_that_every_available_slug_used(self):
+        """ This is to test that if a higher number was used as slug the 
+            unused numbers are still be used """
+        # Create and instance with number at the end
+        PremiumPackage.objects.create(
+            name="30 day 2",
+            sub_name="test sub name",
+            short_description="test short desc",
+            description="test desc",
+            valid_for_days=30,
+            price=15
+        )
+        # Create an instance what whould have the unused 30-day-1
+        PremiumPackage.objects.create(
+            name="30 day",
+            sub_name="test sub name number 5",
+            short_description="test short desc",
+            description="test desc",
+            valid_for_days=30,
+            price=15
+        )
+        p1 = PremiumPackage.objects.get(id=5)
+        self.assertEqual(p1.sub_name, "test sub name number 5")
+        self.assertEqual(p1.slug, "30-day-1")
