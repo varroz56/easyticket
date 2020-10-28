@@ -37,3 +37,22 @@ class StipePaymentTests(APITestCase):
             url, data, format='json')
         self.assertEqual(
             response.data["receipt_email"], "baledi1182@sovixa.com")
+
+    def test_stripe_payment_with_test_account(self):
+        """ Test stripe payment with test customer data """
+        stripe.api_key = settings.STRIPE_SK
+        url = settings.API_URL+'/api/payments/test-payment/'
+
+        data = stripe.PaymentIntent.create(
+            amount=18000,
+            currency='usd',
+            payment_method_types=['card'],
+            receipt_email='baledi1182@sovixa.com',
+            customer='cus_IHsjy2XOtzdbLl',
+            payment_method='pm_1HhIgcJrrLmDBj9hCdMyQnQc',
+            confirm=True
+        )
+        response = self.client.post(
+            url, data, format='json')
+        self.assertEqual(
+            response.data["amount_received"], 18000)
