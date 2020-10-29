@@ -75,4 +75,18 @@ class Event(models.Model):
     def __str__(self):
         if self.reference:
             return self.reference
-        return "Ref"+self.id
+        return "Ref"+str(self.id)
+
+
+class EventUpdate(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.PROTECT)
+    event = models.ForeignKey(
+        "events.Event",
+        on_delete=models.PROTECT)
+    update_notes = models.TextField()
+
+    def __str__(self):
+        return self.event.reference

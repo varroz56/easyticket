@@ -131,7 +131,6 @@ class HandlePremiumPackagePurchaseView(APIView):
                 " Kind Regards, \n" + " The Easy Ticket Team"
 
             # get the email host to set sender
-            print(message)
             sender = settings.EMAIL_HOST_USER
 
             recipient = [data['email']]
