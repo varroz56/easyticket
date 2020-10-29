@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'howtos',
     'premium',
     'payments',
+    'typesandcategories',
 ]
 
 MIDDLEWARE = [
