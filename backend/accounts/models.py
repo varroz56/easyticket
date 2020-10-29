@@ -1,6 +1,8 @@
+from datetime import date, timedelta
 from django.db import models
 # import required models to inherit our custom usermodel
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import (AbstractBaseUser,
+                                        PermissionsMixin, BaseUserManager)
 
 
 # Using custom User model
@@ -65,6 +67,10 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255)
 
     is_premium = models.BooleanField(default=False)
+    # adding date field to set premium timeout
+    # default is yesterday
+    premium_until = models.DateField(
+        auto_now_add=False, default=date.today()-timedelta(1), editable=True)
 
     is_active = models.BooleanField(default=True)
 

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'marketing',
     'howtos',
     'premium',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +101,8 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
-if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing and django-coverage
+# Covers regular testing and django-coverage
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
     DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql'
     DATABASES['default']['NAME'] = ':memory:'
 

@@ -70,7 +70,7 @@ class PremiumPackage(models.Model):
 class ShippingAddress(models.Model):
     """ User's shipping address One to one relation to user"""
     user = models.OneToOneField(
-        "accounts.UserProfile", on_delete=models.CASCADE)
+        "accounts.UserProfile", blank=True, null=True, on_delete=models.CASCADE)
     address_line_one = models.CharField(max_length=254)
     address_line_two = models.CharField(max_length=254)
     postcode = models.CharField(max_length=10)
