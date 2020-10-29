@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django_summernote',
     # Postgres search
     'django.contrib.postgres',
+    # django filters
+    'django_filters',
     # Own apps:
     'accounts',
     'marketing',
