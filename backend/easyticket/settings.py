@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     # https://djoser.readthedocs.io/en/latest/introduction.html
     # Summernote
     'django_summernote',
+    # Postgres search
+    'django.contrib.postgres',
     # Own apps:
     'accounts',
     'marketing',
