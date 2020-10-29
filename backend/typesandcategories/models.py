@@ -7,6 +7,9 @@ class EventType(models.Model):
     short = models.CharField(max_length=3, unique=True)
     description = models.TextField()
 
+    def get_short(self):
+        return self.short
+
     def __str__(self):
         return self.name
 

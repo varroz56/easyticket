@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'premium',
     'payments',
     'typesandcategories',
+    'events',
 ]
 
 MIDDLEWARE = [

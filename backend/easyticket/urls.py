@@ -31,5 +31,7 @@ urlpatterns = [
     path('api/payments/', include('payments.urls')),
     # import types and categories urls
     path('api/types-categories/', include('typesandcategories.urls')),
+    # import events urls
+    path('api/events/', include('events.urls')),
     path('admin/', admin.site.urls),
 ]
