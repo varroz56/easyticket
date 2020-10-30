@@ -1,0 +1,25 @@
+.navbar__nav {
+    background-color: $color-nav-bg;
+    position: -webkit-sticky; /* Safari */
+    position: fixed;
+    top: 0;
+    text-align: center;
+    z-index: 999;
+    overflow: hidden !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 100%;
+    &__item {
+        text-decoration: none !important;
+        color: $color-link !important;
+    }
+    &__link {
+        text-decoration: none !important;
+        color: $color-link !important;
+    }
+    &__toggler {
+        margin: 0 15px 10px 0 !important;
+        padding: 0 !important;
+        color: $color-link !important;
+    }
+}
