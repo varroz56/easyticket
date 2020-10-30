@@ -7,6 +7,9 @@ import { HowTo } from './components/guestPages/HowTo';
 import { Premium } from './components/guestPages/Premium';
 import { ContactUs } from './components/guestPages/ContactUs';
 
+import Home from './components/guestPages/Home';
+import { Login } from './components/guestPages/Login';
+import { SignUp } from './components/guestPages/SignUp';
 
 import './sass/main.scss';
 
@@ -18,6 +21,9 @@ const App = () => (
         <Route exact path="/howto" component={HowTo} />
         <Route exact path="/premium" component={Premium} />
         <Route exact path="/contactus" component={ContactUs} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
       </Switch>
     </Layout>
   </Router>

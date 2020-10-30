@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import helmet to have custom page title
 import { Helmet } from 'react-helmet';
 
 export class ContactUs extends Component {

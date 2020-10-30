@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 
 const Nav = props => {
@@ -30,7 +31,35 @@ const Nav = props => {
                 >
                     <ul className="navbar-nav mr-auto navbar__nav__ul">
                         <li className="nav-item navbar__nav__item">
-
+                            <Link
+                                className="nav-link navbar__nav__link"
+                                to="/"
+                            >
+                                Home
+                                    <br />
+                                <i className="fas fa-home fa__home"></i>
+                            </Link>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav navbar__nav__ul">
+                        <li className="nav-item navbar__nav__item">
+                            <Link className="nav-link navbar__nav__link" to="/login">
+                                Login
+                    <br />
+                                <i className="fas fa-sign-in-alt fa__signin"></i>
+                            </Link>
+                        </li>
+                        <li className="nav-item navbar__nav__item">
+                            <Link
+                                className="nav-link navbar__nav__link"
+                                to="/signup"
+                                tabIndex="-1"
+                                aria-disabled="true"
+                            >
+                                Sign Up
+                    <br />
+                                <i className="fas fa-user-plus fa__signup"></i>
+                            </Link>
                         </li>
 
                     </ul>
