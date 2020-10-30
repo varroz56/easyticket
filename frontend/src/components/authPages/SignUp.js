@@ -41,7 +41,7 @@ const SignUp = () => {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="Firstname"
+                        placeholder="First name"
                         name="first_name"
                         value={first_name}
                         onChange={(e) => onChange(e)}
@@ -53,7 +53,7 @@ const SignUp = () => {
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="Lastname"
+                        placeholder="Last name"
                         name="last_name"
                         value={last_name}
                         onChange={(e) => onChange(e)}
@@ -99,10 +99,8 @@ const SignUp = () => {
                         required
                     />
                 </div>
-                <button className="auth__form__button__submit btn btn-sm" type="submit">
-                    Register
-                    <br />
-                    <i className="fas fa-user-plus fa__signup"></i>
+                <button className="auth__form__button__submit btn-outline-success waves-effect btn btn-sm" type="submit">
+                    <i className="fas fa-user-plus fa__signup"></i>{'   '}Register
                 </button>
             </form>
             <p className="mt-3">

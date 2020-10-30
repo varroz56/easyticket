@@ -18,3 +18,21 @@ body {
 .pushdown-content{
     height: 30px;
 }
+
+.btn-outline-success{
+    border-radius: 1px;
+    border-color: $color-link !important;
+    border-top-color: $color-link !important;
+    border-right-color: $color-link !important;
+    border-bottom-color: $color-link !important;
+    border-left-color: $color-link !important;
+    text-decoration: none !important;
+    color: $color-link !important;
+    &:hover{
+        color: $color-hover !important;
+        border-left: 3px solid $color-link;
+        border-radius: 1px;
+        box-shadow: 0 2px 2px 2px $color-link;
+        background-color: $color-nav-bg;
+    }
+}

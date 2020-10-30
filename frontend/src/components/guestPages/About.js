@@ -5,13 +5,20 @@ import { Helmet } from 'react-helmet';
 export class About extends Component {
     render() {
         return (
-            <div className="container about__container pt-5">
+            <div className="container about__container pt-5 noside">
                 <Helmet>
                     <title>About Easy Ticket </title>
                     <meta name="description" content="About Easy Ticket" />
                 </Helmet>
-                <div className="row about__section_row">
-                    <div className="about__section__content">About</div>
+                <div className="about__section">
+                    <div class="jumbotron">
+                        <h1 class="display-4 text-center">Easy Ticket is about the customer. </h1>
+                        <p class="lead text-center">Customer can be the end-user and the support user too. Our aim is to give as much automation and hand on both sides.
+                        With our constantly improved and extended knowledge base you will either find the solution to any issues, or we will jump on and work hard to help you out.
+                    </p>
+                        <hr class="my-4" />
+                        <p className=" text-center">Although, we believe that most of the things can be coded and automated, our number one priority is you!</p>
+                    </div>
                 </div>
             </div>
         )

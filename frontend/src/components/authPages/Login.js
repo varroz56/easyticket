@@ -57,12 +57,11 @@ const Login = () => {
                     />
                 </div>
                 <button
-                    className="auth__form__button__submit btn btn-sm"
+                    className="auth__form__button__submit btn-outline-success waves-effect btn btn-sm"
                     type="submit"
                 >
-                    Login
-                    <br />
-                    <i className="fas fa-sign-in-alt fa__signin"></i>
+                    <i className="fas fa-sign-in-alt fa__signin"></i>{'   '}Login
+
                 </button>
             </form>
             <p className="mt-3">
