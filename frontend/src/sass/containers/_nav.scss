@@ -16,6 +16,12 @@
     &__link {
         text-decoration: none !important;
         color: $color-link !important;
+        &:hover{
+            color: $color-hover !important;
+            border-left: 3px solid $color-link;
+            border-radius: 1px;
+            box-shadow: 0 2px 2px 2px $color-link;
+        }
     }
     &__toggler {
         margin: 0 15px 10px 0 !important;

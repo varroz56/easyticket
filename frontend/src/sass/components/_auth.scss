@@ -1,0 +1,34 @@
+.auth{
+    &__container{
+        padding-top: 2rem;
+        max-width: fit-content;
+    }
+    &__form{
+        &__button{
+            &__submit{
+                background-color: $color-button;
+                color: $color-link;
+                font-size: 1rem;
+                &:hover{
+                    color: $color-hover !important;
+                    border-left: 3px solid $color-link;
+                    box-shadow: 0 2px 2px 2px $color-link;
+                }
+            }
+        }
+        &__link{
+            color:$color-link;
+            text-decoration: none !important;
+            &:hover{
+                color:$color-hover!important;
+                font-style: bold;
+            }
+        }
+        &__input{
+            label{
+                color: $color-link;
+            }
+        }
+        
+    }
+}

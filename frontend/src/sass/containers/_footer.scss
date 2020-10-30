@@ -21,5 +21,9 @@
     &__link {
         text-decoration: none !important;
         color: $color-link !important;
+        &:hover{
+                color:$color-hover!important;
+                font-style: bold;
+        }
     }
 }
