@@ -7,6 +7,8 @@ const Layout = props => {
     return (
         <div>
             <Nav />
+            <div className="pushdown-content"></div>
+            {props.children}
             <Footer />
         </div>
     )

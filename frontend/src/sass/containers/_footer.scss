@@ -12,4 +12,14 @@
     &__container {
         margin: auto;
     }
+    &__row {
+        margin: auto;
+    }
+    &__col {
+        margin: auto;
+    }
+    &__link {
+        text-decoration: none !important;
+        color: $color-link !important;
+    }
 }
