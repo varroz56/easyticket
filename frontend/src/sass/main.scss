@@ -5,9 +5,9 @@
 @import './containers/nav';
 @import './containers/footer';
 
-@import './components/auth';
-@import './components/about';
-@import './components/home';
-@import './components/howtos';
-@import './components/premium';
-@import './components/checkout';
+@import './components/accounts/auth';
+@import './components/homePages/about';
+@import './components/homePages/home';
+@import './components/howtos/howtos';
+@import './components/premium/premium';
+@import './components/payments/checkout';
