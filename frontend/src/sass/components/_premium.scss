@@ -1,0 +1,36 @@
+.premium{
+    &__section{
+        &__title{
+            color: $color-link;
+        }
+        &__subtitle{
+            color: $color-link;
+            text-align: center;
+            font-size: 2rem;
+            text-transform: capitalize;
+        }
+        &__card{
+            border: solid 1px $color-link !important;
+            background-color: $color-nav-bg;
+            transform: scale(.90);
+            &:hover{
+                transform: scale(1);
+                box-shadow:none;
+                background-color: #a7beff;
+            }
+            &__title{
+                color: $color-link;
+            }
+            &__subtitle{
+                text-align: center;
+                color: $color-link;
+                font-size: 2.2rem;
+            }
+            &__text{
+                text-align: center;
+                color: $color-link;
+                font-size: 1.6rem;
+            }
+        }
+    }
+}

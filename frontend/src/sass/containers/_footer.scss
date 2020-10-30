@@ -21,9 +21,11 @@
     &__link {
         text-decoration: none !important;
         color: $color-link !important;
+        transition: width 2s;
         &:hover{
                 color:$color-hover!important;
-                font-style: bold;
+                color: $color-hover !important;
+                border-left: 1px solid $color-link;
         }
     }
 }

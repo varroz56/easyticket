@@ -1,0 +1,12 @@
+.howto{
+    &__collapse{
+        border: solid 1px $color-link;
+    }
+    &__section{
+        &__head{
+            p{
+                color: $color-link;
+            }
+        }
+    }
+}

@@ -10,10 +10,20 @@ export class Premium extends Component {
                     <title>Easy Ticket Premium</title>
                     <meta name="description" content="Premium page" />
                 </Helmet>
+                <div className="display-4 premium__section__title">Great savings on our multi-month packages!</div>
+                <div className="premium__section__subtitle">We have created different packages to fit for your needs</div>
                 <div className="row premium__section_row">
-                    <div className="premium__section__content">Premium</div>
+                    <div className="col-12 col-md-6 col-lg-4 premium__section__col">
+                        <div className="card premium__section__card">
+                            <div className="card-body premium__section__card__body">
+                                <h5 className="card-title premium__section__card__title display-4">Card title</h5>
+                                <h6 className="card-subtitle mb-2 text-muted premium__section__card__subtitle">Card subtitle</h6>
+                                <p className="card-text premium__section__card__text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
