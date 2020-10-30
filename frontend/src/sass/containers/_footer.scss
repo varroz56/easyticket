@@ -24,8 +24,6 @@
         transition: width 2s;
         &:hover{
                 color:$color-hover!important;
-                color: $color-hover !important;
-                border-left: 1px solid $color-link;
         }
     }
 }

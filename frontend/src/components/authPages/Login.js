@@ -71,7 +71,7 @@ const Login = () => {
             </p>
             <p className="mt-3">
                 Forgot your Password?{' '}
-                <Link className="auth__form__link" to=""><i class="fas fa-sync"></i>   Reset Password</Link>
+                <Link className="auth__form__link" to="/reset_password"><i class="fas fa-sync"></i>   Reset Password</Link>
             </p>
         </div>
     )

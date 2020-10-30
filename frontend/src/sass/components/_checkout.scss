@@ -1,0 +1,28 @@
+.checkout{
+    &__container{
+        width: fit-content;
+    }
+    &__title{
+        text-align: center;
+        font-size: 1.8rem;
+        text-transform: capitalize;
+    }
+    &__form{
+        &__input{
+            label{
+                color: $color-link;
+            }
+        }
+    }
+    &__card{
+
+    }
+}
+.StripeElement--webkit-autofill {
+    background: transparent !important;
+  }
+  
+  .StripeElement {
+    width: 100%;
+    padding: 11px 15px 11px 0;
+  }

@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 export class About extends Component {
     render() {
         return (
-            <div className="container about__container pt-5 noside">
+            <div className="container about__container mt-5 pt-5 noside">
                 <Helmet>
                     <title>About Easy Ticket </title>
                     <meta name="description" content="About Easy Ticket" />

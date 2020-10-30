@@ -1,3 +1,4 @@
+import './sass/main.scss';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './hocs/Layout';
@@ -10,8 +11,18 @@ import ContactUs from './components/guestPages/ContactUs';
 import Home from './components/guestPages/Home';
 import Login from './components/authPages/Login';
 import SignUp from './components/authPages/SignUp';
+import Activate from './components/authPages/Activate';
+import ResetPassword from './components/authPages/PasswordReset';
+import ConfirmResetPassword from './components/authPages/PasswordReset';
 
-import './sass/main.scss';
+import CheckoutForm from './components/userPages/Checkout';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
+
+
 
 const App = () => (
   <Router>
@@ -24,6 +35,24 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
+        <Route
+          exact
+          path="/reset_password"
+          component={ResetPassword}
+        />
+        <Route
+          exact
+          path="/password/reset/confirm/:uid/:token"
+          component={ConfirmResetPassword}
+        />
+        <Route
+          exact
+          path="/activate/:uid/:token"
+          component={Activate}
+        />
+        <Elements stripe={stripePromise}>
+          <Route exact path="/checkout" component={CheckoutForm} />
+        </Elements>
       </Switch>
     </Layout>
   </Router>
