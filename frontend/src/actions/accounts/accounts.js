@@ -133,7 +133,7 @@ export const login = (email, password) => async (dispatch) => {
 
     // to be able valid format before post request
     const body = JSON.stringify({ email, password });
-
+    console.log(email, password)
     try {
         // post request to have an access and refresh token created for user
         // if this is successful, send user data and login success
