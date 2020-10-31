@@ -41,7 +41,22 @@ const Nav = props => {
                             </Link>
                         </li>
                     </ul>
+
                     <ul className="navbar-nav navbar__nav__ul">
+                        <li className="nav-item navbar__nav__item">
+                            <Link className="nav-link navbar__nav__link" to="/select-event">
+                                Create New
+                    <br />
+                                <i class="fas fa-plus-circle"></i>
+                            </Link>
+                        </li>
+                        <li className="nav-item navbar__nav__item">
+                            <Link className="nav-link navbar__nav__link" to="/events">
+                                My Events
+                    <br />
+                                <i class="fas fa-folder-open"></i>
+                            </Link>
+                        </li>
                         <li className="nav-item navbar__nav__item">
                             <Link className="nav-link navbar__nav__link" to="/login">
                                 Login

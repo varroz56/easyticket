@@ -16,6 +16,11 @@ import ResetPassword from './components/accounts/PasswordReset';
 import ConfirmResetPassword from './components/accounts/PasswordReset';
 
 import CheckoutForm from './components/payments/Checkout';
+
+import Events from './components/events/Events';
+import SelectEvent from './components/events/SelectEvent';
+import SubmitEvent from './components/events/SubmitEvent';
+import EventDetails from './components/events/EventDetails';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -35,6 +40,10 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/events" component={Events} />
+        <Route exact path="/select-event" component={SelectEvent} />
+        <Route exact path="/submit-event" component={SubmitEvent} />
+        <Route exact path="/event-details" component={EventDetails} />
         <Route
           exact
           path="/reset_password"
