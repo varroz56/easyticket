@@ -48,7 +48,7 @@ const App = () => (
           <Route exact path="/events" component={Events} />
           <Route exact path="/select-event" component={SelectEvent} />
           <Route exact path="/submit-event" component={SubmitEvent} />
-          <Route exact path="/event-details" component={EventDetails} />
+          <Route exact path="/event-details/:reference" component={EventDetails} />
           <Route
             exact
             path="/reset_password"

@@ -2,11 +2,13 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.utils import timezone
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from accounts.models import UserProfile
 from .models import Event, EventUpdate
 from typesandcategories.models import EventSubCategory
+from .serializers import EventSerializer, EventUpdateSerializer
 
 
 class EventCreateView(APIView):
@@ -131,3 +133,27 @@ class EventUpdateView(APIView):
             content = {
                 'error', 'Event updated/closed, but unable to send email'}
             return Response(content, status=status.HTTP_409_CONFLICT)
+
+
+class EventListView(ListAPIView):
+    """ This view will list Evants ordered by the most
+    recently created ones"""
+    permission_classes = (permissions.AllowAny,)
+    queryset = Event.objects.order_by('-created_on')
+    serializer_class = EventSerializer
+
+
+class EventDetailView(RetrieveAPIView):
+    """This view is to render an event in more details"""
+    permission_classes = (permissions.AllowAny,)
+    queryset = Event.objects.all()
+    lookup_field = 'reference'
+    serializer_class = EventSerializer
+
+
+class EventUpdateListView(ListAPIView):
+    """This view is to render all updates related to an event"""
+    permission_classes = (permissions.AllowAny,)
+    queryset = EventUpdate.objects.all()
+    lookup_field = 'event'
+    serializer_class = EventUpdateSerializer

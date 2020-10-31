@@ -1,9 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 
-const EventDetails = () => {
+const EventDetails = (props) => {
+    const [myevent, setMyEvent] = useState({});
+    const [myupdates, setMyUpdates] = useState({});
+
+
+    useEffect(() => {
+
+        const reference = props.match.params.id;
+
+
+        axios.get(`${process.env.REACT_APP_API_URL}/api/listings/event-details/${reference}`)
+            .then(res => {
+                setMyEvent(res.data);
+                console.log(myevent)
+
+            })
+            .catch(err => {
+
+            });
+    }, [props.match.params.id]);
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}/api/events/event-details/${myevent.id}`)
+            .then(res => {
+                setMyUpdates(res.data);
+                console.log(myupdates)
+            })
+            .catch(err => {
+
+            });
+    }, []);
+
+
+    const displayMyUpdates = () => {
+        let updateList = [];
+        myupdates.map(myupdate => {
+            updateList.push(
+                <div className="row">
+                    <div className="col">
+                        <table class="table table-striped table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Update Message</th>
+                                    <th scope="col">Updated on: </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th colspan="2" scope="row">{myupdate.update_message}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            );
+        });
+    };
+
     return (
-        < div className="container-fluid eventdetails__container mt-4 bt-4" >
+        <div className="container-fluid eventdetails__container mt-4 bt-4" >
             <Helmet>
                 <title>Easy Ticket Event Detail</title>
                 <meta name='description' content='Events Details' />
@@ -19,8 +78,8 @@ const EventDetails = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
-                                <td >Mark</td>
+                                <th scope="row">{myevent.reference}</th>
+                                <td >{myevent.status}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -34,7 +93,7 @@ const EventDetails = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{myevent.sub_category}</th>
                             </tr>
                         </tbody>
                     </table>
@@ -48,7 +107,7 @@ const EventDetails = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{myevent.creted_on}</th>
                             </tr>
                         </tbody>
                     </table>
@@ -62,7 +121,7 @@ const EventDetails = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{myevent.created_for}</th>
                             </tr>
                         </tbody>
                     </table>
@@ -79,29 +138,13 @@ const EventDetails = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row">{myevent.open_notes}</th>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    <table class="table table-striped table-sm table-dark">
-                        <thead>
-                            <tr>
-                                <th scope="col">Update Message</th>
-                                <th scope="col">Updated on: </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th colspan="2" scope="row">loremfajseb;vo\bv'osibv;oankdiv;zklvn;lkxdnv;lxkn;lkdgn;kgn\b;oin;robin\s;roremfajseb;vo\bv'osibv;oankdiv;zklvn;lkxdnv;lxkn;lkdgn;kgn\b;oin;robin\s;roremfajseb;vo\bv'osibv;oankdiv;zklvn;lkxdnv;lxkn;lkdgn;kgn\b;oin;robin\s;roi</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            {displayMyUpdates()}
             <div className="jumbotron jumbotron fixed-bottom eventdetails__jumbotron">
                 <form className="inline-form ">
                     <div className="row form-row justify-content-end">
@@ -123,7 +166,7 @@ const EventDetails = () => {
                 </form>
             </div>
         </div >
-    )
-}
+    );
+};
 
 export default EventDetails;
