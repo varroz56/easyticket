@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { Helmet } from 'react-helmet';
 import { login } from '../actions/auth';
 
 const Login = ({ login }) => {
@@ -25,43 +25,53 @@ const Login = ({ login }) => {
     //<Redirect
 
     return (
-        <div className='conatiner mt-5 pt-5'>
+        <div className="auth__container container">
+            <Helmet>
+                <title>Easy Ticket Login</title>
+                <meta name="description" content="Please login" />
+            </Helmet>
             <h1>Sign In</h1>
-            <form onSubmit={e => onSubmit(e)}>
-                <div className='form-group'>
+            <p>Sign into your Account</p>
+            <form className="auth__form" onSubmit={(e) => onSubmit(e)}>
+                <div className="auth__form__input form-group">
                     <input
-                        className='form-control'
-                        type='email'
-                        placeholder='Email'
-                        name='email'
+                        className="form-control"
+                        type="email"
+                        placeholder="Email"
+                        name="email"
                         value={email}
-                        onChange={e => onChange(e)}
+                        onChange={(e) => onChange(e)}
                         required
                     />
                 </div>
-                <div className='form-group'>
+                <div className="auth__form__input form-group">
                     <input
-                        className='form-control'
-                        type='password'
-                        placeholder='Password'
-                        name='password'
+                        className="form-control"
+                        type="password"
+                        placeholder="Password"
+                        name="password"
                         value={password}
-                        onChange={e => onChange(e)}
-                        minLength='8'
+                        onChange={(e) => onChange(e)}
+                        minLength="6"
                         required
                     />
                 </div>
-                <button className='btn btn-primary' type='submit'>Login</button>
-                <p className='mt-3'>
-                    Don't have an account? <Link to='/signup'>Sign Up</Link>
-                </p>
-                <p className='mt-3'>
-                    Forgot your password? <Link to='/reset-password'>Reset Password</Link>
-
-                </p>
+                <button
+                    className="auth__form__button__submit btn btn-primary"
+                    type="submit"
+                >
+                    Login
+                </button>
             </form>
+            <p className="mt-3">
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+            </p>
+            <p className="mt-3">
+                Forgot your Password?{' '}
+                <Link to="/reset_password">Reset Password</Link>
+            </p>
         </div>
-    )
+    );
 
 };
 
