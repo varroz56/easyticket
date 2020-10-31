@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 // import helmet to have custom page title
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+// importing login action
+import { login } from '../../actions/accounts/accounts';
 
-const Login = () => {
+
+const Login = (login, isAuthenticated) => {
     // Define form state(empty)
     const [formData, setFormData] = useState({
         email: '',
@@ -18,10 +21,11 @@ const Login = () => {
     // on submit call login func using the form data
     const onSubmit = (e) => {
         e.preventDefault();
-        //login func
+
+        login(email, password);
     };
-
-
+    // if user is authenticated, redirect to the home page(atm)
+    if (isAuthenticated) return <Redirect to="/" />;
 
     return (
         <div className="auth__container container">
@@ -77,5 +81,8 @@ const Login = () => {
     )
 }
 
-
-export default Login;
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+// now can use the isAuthenticated
+export default connect(mapStateToProps, { login })(Login);
