@@ -15,7 +15,7 @@ import {
     SIGNUP_FAILED,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAILED
-} from '../actions/actionTypes';
+} from '../types/accountsTypes';
 // import axios to handle http requests
 import axios from 'axios';
 import { showAlert } from '../Alert';

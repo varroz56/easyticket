@@ -1,10 +1,12 @@
 // import Fragment to be able to render multiple components
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 // import our alert container
 import Alert from './Alert';
+import { logout } from '../actions/accounts/accounts';
 
-const Nav = props => {
+const Nav = ({ logout, isAuthenticated }) => {
     return (
         <Fragment>
             <header className="mb-5">
@@ -90,9 +92,12 @@ const Nav = props => {
     )
 }
 
+// check if user is authenticated decie which links to show on navbar
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
 
-
-export default Nav;
+export default connect(mapStateToProps, { logout })(Nav);
 
 
 

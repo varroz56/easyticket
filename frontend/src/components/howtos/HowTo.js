@@ -14,7 +14,7 @@ export default class HowTo extends React.Component {
         axios.get(`${process.env.REACT_APP_API_URL}/api/howtos/get-howtos/`)
             .then(res => {
                 const howtos = res.data;
-                const searchResult = howtos;
+                //const searchResult = howtos;
                 this.setState({ howtos });
 
             })

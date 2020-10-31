@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 // import helmet to have custom page title
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 // importing login action
 import { login } from '../../actions/accounts/accounts';
 

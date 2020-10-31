@@ -15,7 +15,7 @@ import {
     ACTIVATION_SUCCESS,
     ACTIVATION_FAILED,
     LOGOUT
-} from '../actions/actionTypes';
+} from '../actions/types/accountsTypes';
 
 // Define initial state, check if there is an access and 
 // refresh token stored in the local storage
