@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-
+import { connect } from 'react-redux';
+import { confirm_reset_password } from '../../actions/accounts/accounts';
 
 const ConfirmPasswordReset = (props) => {
 
@@ -13,6 +14,11 @@ const ConfirmPasswordReset = (props) => {
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const onSubmit = e => {
         e.preventDefault();
+        const uid = props.match.params.uid;
+        const token = props.match.params.token;
+
+        props.confirm_reset_password(uid, token, new_password, re_new_password);
+        setRequestSent(true);
     };
     return (
         <div className='container mt-5 auth__container'>
@@ -53,4 +59,4 @@ const ConfirmPasswordReset = (props) => {
     );
 };
 
-export default ConfirmPasswordReset;
+export default connect(null, { confirm_reset_password })(ConfirmPasswordReset);
