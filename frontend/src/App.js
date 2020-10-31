@@ -14,8 +14,13 @@ import Activate from './containers/Activate';
 import ResetPassword from './containers/ResetPassword';
 import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
 import Premium from './containers/Premium';
-
+import CheckoutForm from './containers/CheckoutForm';
 import Layout from './hocs/Layout';
+
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 const App = () => (
     <Provider store={store}>
@@ -30,6 +35,9 @@ const App = () => (
                     <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                     <Route exact path='/activate/:uid/:token' component={Activate} />
                     <Route exact path='/premium' component={Premium} />
+                    <Elements stripe={stripePromise}>
+                        <Route exact path="/checkout" component={CheckoutForm} />
+                    </Elements>
                 </Switch>
             </Layout>
         </Router>
