@@ -10,7 +10,7 @@ import {
 } from './types';
 
 
-export const find_or_create_stripe_customer = (
+export const handle_payment = (
     email,
     paymentMethod,
     amount,
