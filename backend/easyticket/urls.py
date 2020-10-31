@@ -36,6 +36,8 @@ urlpatterns = [
     path('api/types-categories/', include('typesandcategories.urls')),
     # import events urls
     path('api/events/', include('events.urls')),
+    # import howtos urls
+    path('api/howtos/', include('howtos.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

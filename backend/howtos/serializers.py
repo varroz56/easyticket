@@ -6,4 +6,4 @@ class HowToSerializer(serializers.ModelSerializer):
     """ Serialize How To data"""
     class Meta:
         model = HowTo
-        fields = ('question', 'answer')
+        fields = ('question', 'answer', 'reference')
