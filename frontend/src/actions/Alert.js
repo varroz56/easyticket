@@ -1,6 +1,6 @@
 // using uuid to set a unique id to all alerts
 import { v4 as uuid } from 'uuid';
-import { SHOW_ALERT, HIDE_ALERT } from './actionTypes';
+import { SHOW_ALERT, HIDE_ALERT } from '../actions/types/alertTypes';
 
 // The alert will have a message, a type(error, success, info)
 // and a timeout to automatically hide the alert after a set of time

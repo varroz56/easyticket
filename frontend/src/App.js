@@ -70,7 +70,6 @@ const App = () => (
         </Switch>
       </Layout>
     </Router>
-
   </Provider>
 );
 

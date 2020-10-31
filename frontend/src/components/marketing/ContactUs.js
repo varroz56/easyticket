@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 // import helmet to have custom page title
 import { Helmet } from 'react-helmet';
+// Import our contactusform to handle submit request
+import submitContactEmailForm from '../../actions/marketing/ContactUsForm';
+import { connect } from 'react-redux';
 
-const ContactUs = () => {
+
+const ContactUs = ({ submitContactEmailForm }) => {
     // Define form state(empty)
     const [formData, setFormData] = useState({
         first_name: '',
@@ -27,8 +31,9 @@ const ContactUs = () => {
     // on submit call login func using the form data
     const onSubmit = (e) => {
         e.preventDefault();
-        //form submit func
+        submitContactEmailForm(first_name, last_name, email, subject, message, subscribe_me);
     };
+
     return (
         <div className="container container__contactus pt-5">
             <Helmet>
@@ -147,4 +152,4 @@ const ContactUs = () => {
     )
 }
 
-export default ContactUs;
+export default connect(null, { submitContactEmailForm })(ContactUs);
