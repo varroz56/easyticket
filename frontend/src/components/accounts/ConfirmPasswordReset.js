@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { confirm_reset_password } from '../../actions/accounts/accounts';
 
@@ -8,6 +9,7 @@ const ConfirmPasswordReset = (props) => {
     // this is quite similar to password reset
     // but here the form data is the new password
     const [requestSent, setRequestSent] = useState(false);
+
     const [formData, setFormData] = useState({
         new_password: '',
         re_new_password: ''
@@ -23,6 +25,9 @@ const ConfirmPasswordReset = (props) => {
         props.confirm_reset_password(uid, token, new_password, re_new_password);
         setRequestSent(true);
     };
+
+    if (requestSent)
+        return <Redirect to='/' />
     return (
         <div className='container mt-5 auth__container'>
             <Helmet>

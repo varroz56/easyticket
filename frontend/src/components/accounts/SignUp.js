@@ -121,7 +121,7 @@ const SignUp = ({ signup, isAuthenticated }) => {
 };
 
 const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.accounts.isAuthenticated
 });
 
 export default connect(mapStateToProps, { signup })(SignUp);
