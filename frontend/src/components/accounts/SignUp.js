@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 // import helmet to have custom page title
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signup } from '../../actions/accounts/accounts';
 
 
-const SignUp = () => {
+const SignUp = ({ signup, isAuthenticated }) => {
     // signup form to have empty in this state
     const [formData, setFormData] = useState({
         email: '',
@@ -14,7 +16,7 @@ const SignUp = () => {
         re_password: ''
     });
 
-
+    const [accountCreated, setAccountCreated] = useState(false);
     const { email, first_name, last_name, password, re_password } = formData;
 
     const onChange = (e) =>
@@ -22,8 +24,16 @@ const SignUp = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        //signup func
+
+        if (password === re_password) {
+            signup(formData);
+            setAccountCreated(true);
+        }
     };
+    // if user authenticated send back to the home page
+    if (isAuthenticated) return <Redirect to="/" />;
+
+    if (accountCreated) return <Redirect to="login" />;
 
     return (
         <div className="container auth__container">
@@ -110,4 +120,8 @@ const SignUp = () => {
     )
 };
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { signup })(SignUp);

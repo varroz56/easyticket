@@ -5,6 +5,9 @@ import { confirm_reset_password } from '../../actions/accounts/accounts';
 
 const ConfirmPasswordReset = (props) => {
 
+    // this is quite similar to password reset
+    // but here the form data is the new password
+    const [requestSent, setRequestSent] = useState(false);
     const [formData, setFormData] = useState({
         new_password: '',
         re_new_password: ''
