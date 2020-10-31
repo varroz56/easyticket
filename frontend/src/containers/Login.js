@@ -57,18 +57,20 @@ const Login = ({ login, isAuthenticated }) => {
                     />
                 </div>
                 <button
-                    className="auth__form__button__submit btn btn-primary"
+                    className="auth__form__button__submit btn-outline-success waves-effect btn btn-sm"
                     type="submit"
                 >
                     Login
                 </button>
             </form>
             <p className="mt-3">
-                Don't have an account? <Link to="/signup">Sign Up</Link>
+                Don't have an account? <Link className="auth__form__link" to="/signup"><i className="fas fa-user-plus fa__signup"></i>  Sign Up
+                    </Link>
+
             </p>
             <p className="mt-3">
                 Forgot your Password?{' '}
-                <Link to="/reset-password">Reset Password</Link>
+                <Link className="auth__form__link" to="/reset_password"><i class="fas fa-sync"></i>   Reset Password</Link>
             </p>
         </div>
     );

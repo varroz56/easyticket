@@ -15,7 +15,7 @@ export const handle_payment = (
     paymentMethod,
     amount,
     user,
-    package,
+    ppackage,
     address_line_one,
     address_line_two,
     postcode,
@@ -47,18 +47,26 @@ export const handle_payment = (
             type: CUSTOMER_CREATE_OR_FIND_SUCCESS
         });
 
-        // from the response and the held data create payment intent
-        const body = JSON.stringify({
-            'amount': amount,
-            'currency': 'usd',
-            'payment_method_types': ['card'],
-            'receipt_email': email,
-            'customer': res.data.id,
-            'payment_method': paymentMethod,
-            'confirm': True
-        })
+        // id = res.data.id
+        // amount = data['amount'],
+        //     currency = 'eur',
+        //     payment_method_types = ['card'],
+        //     receipt_email = data['email'],
+        //     customer = data['customer'],
+        //     payment_method = data['payment_method'],
+        //     confirm = True
+        // // from the response and the held data create payment intent
+        // const body = JSON.stringify({
+        //     amount,
+        //     currency,
+        //     payment_method_types,
+        //     receipt_email,
+        //     customer,
+        //     payment_method,
+        //     confirm
+        // })
 
-        const res = await axios.post(
+        const res1 = await axios.post(
             `${process.env.REACT_APP_API_URL}/api/payments/payment/`,
             body,
             config
@@ -77,18 +85,18 @@ export const handle_payment = (
                 const body = JSON.stringify({
                     "user": user,
                     "email": email,
-                    "chosen_package": package,
+                    "chosen_package": ppackage,
                     "address_line_one": address_line_one,
                     "address_line_two": address_line_two,
                     "postcode": postcode,
                     "city": city,
                     "country": country,
                     "price_paid": price_paid,
-                    "days_given": days_given,
+                    "days_given": ppackage.days_given,
                     "add_update_shippingaddress": add_update_shippingaddress
                 })
 
-                const res = await axios.post(
+                const res2 = await axios.post(
                     `${process.env.REACT_APP_API_URL}/api/payments/create-purchase/`,
                     body,
                     config

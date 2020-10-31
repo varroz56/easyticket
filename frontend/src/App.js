@@ -8,12 +8,14 @@ import store from './store';
 
 
 import Home from './containers/Home';
+import About from './containers/About';
 import Login from './containers/Login';
 import Signup from './containers/Signup';
 import Activate from './containers/Activate';
 import ResetPassword from './containers/ResetPassword';
 import ResetPasswordConfirm from './containers/ResetPasswordConfirm';
 import Premium from './containers/Premium';
+import ContactUs from './containers/ContactUs';
 import CheckoutForm from './containers/CheckoutForm';
 import Layout from './hocs/Layout';
 
@@ -28,6 +30,7 @@ const App = () => (
             <Layout>
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route exact path='/about' component={About} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={Signup} />
                 # added Djoser premade ursl for route
@@ -38,6 +41,7 @@ const App = () => (
                     <Elements stripe={stripePromise}>
                         <Route exact path="/checkout" component={CheckoutForm} />
                     </Elements>
+                    <Route exact path='/contactus' component={ContactUs} />
                 </Switch>
             </Layout>
         </Router>

@@ -1,5 +1,5 @@
 // https://stripe.com/docs/stripe-js/react
-import React, { useState } from 'react';
+import React, { useState, setState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { handle_payment } from '../actions/payment';
 
@@ -15,6 +15,7 @@ const CheckoutForm = () => {
         country: '',
         postcode: ''
     });
+
 
     let save_address = false;
     const { full_name, email, address_line_one, address_line_two, city, country, postcode } = formData;
@@ -53,20 +54,20 @@ const CheckoutForm = () => {
         if (error) {
             console.log('[error]', error);
         } else {
-            handle_payment(
-                email,
-                paymentMethod,
-                amount,
-                user,
-                package,
-                address_line_one,
-                address_line_two,
-                postcode,
-                city,
-                country,
-                price_paid,
-                add_update_shippingaddress
-            );
+            // handle_payment(
+            //     email,
+            //     paymentMethod,
+            //     amount,
+            //     user,
+            //     ppackage,
+            //     address_line_one,
+            //     address_line_two,
+            //     postcode,
+            //     city,
+            //     country,
+            //     price_paid,
+            //     add_update_shippingaddress
+            // );
         }
     };
 
