@@ -1,6 +1,7 @@
 // https://stripe.com/docs/stripe-js/react
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { handle_payment } from '../actions/payment';
 
 
 const CheckoutForm = () => {
@@ -52,7 +53,20 @@ const CheckoutForm = () => {
         if (error) {
             console.log('[error]', error);
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            handle_payment(
+                email,
+                paymentMethod,
+                amount,
+                user,
+                package,
+                address_line_one,
+                address_line_two,
+                postcode,
+                city,
+                country,
+                price_paid,
+                add_update_shippingaddress
+            );
         }
     };
 
