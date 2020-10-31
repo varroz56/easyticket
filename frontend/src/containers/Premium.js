@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 
 
 const Premium = (props) => {
+
+
+
     if (props.isAuthenticated) {
         return (
             <div className="container premium__container pt-5">
