@@ -39,7 +39,7 @@ class ContactCreateView(APIView):
             return Response(content, status=status.HTTP_201_CREATED)
         # Found contact
         content = {'success', 'Found Contact'}
-        return Response(content, status=status.HTTP_302_FOUND)
+        return Response(content, status=status.HTTP_200_OK)
 
 
 class ContactUsMessageCreateView(APIView):
