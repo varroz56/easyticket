@@ -1,0 +1,15 @@
+.home{
+    &__container{
+        max-width: fit-content;
+        padding-bottom: 65px;
+    
+    }
+    &__link{
+        color:$color-link;
+            text-decoration: none !important;
+            &:hover{
+                color:$color-hover!important;
+                font-style: bold;
+            }
+    }
+}

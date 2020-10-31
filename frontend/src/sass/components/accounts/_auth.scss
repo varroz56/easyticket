@@ -1,0 +1,23 @@
+.auth{
+    &__container{
+        padding-top: 2rem;
+        max-width: fit-content;
+    }
+    &__form{
+
+        &__link{
+            color:$color-link;
+            text-decoration: none !important;
+            &:hover{
+                color:$color-hover!important;
+                font-style: bold;
+            }
+        }
+        &__input{
+            label{
+                color: $color-link;
+            }
+        }
+        
+    }
+}

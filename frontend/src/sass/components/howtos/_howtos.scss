@@ -1,0 +1,14 @@
+.howto{
+    &__collapse{
+        border: solid 1px $color-link;
+        text-align: center;
+    }
+    &__section{
+        &__head{
+
+                color: $color-link;
+                font-size: 2rem;
+                text-align: center;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.checkout{
+    &__container{
+        width: fit-content;
+    }
+    &__title{
+        text-align: center;
+        font-size: 1.8rem;
+        text-transform: capitalize;
+    }
+    &__form{
+        &__input{
+            label{
+                color: $color-link;
+            }
+        }
+    }
+
+}

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { login } from '../actions/auth';
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -21,8 +21,8 @@ const Login = ({ login }) => {
     }
 
     // if user authenticated, redirect to home
-    //if(isAuthenticated)
-    //<Redirect
+    if (isAuthenticated)
+        <Redirect to='/' />
 
     return (
         <div className="auth__container container">
@@ -68,7 +68,7 @@ const Login = ({ login }) => {
             </p>
             <p className="mt-3">
                 Forgot your Password?{' '}
-                <Link to="/reset_password">Reset Password</Link>
+                <Link to="/reset-password">Reset Password</Link>
             </p>
         </div>
     );
@@ -76,7 +76,7 @@ const Login = ({ login }) => {
 };
 
 const mapStateToProps = state => ({
-    //isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(null, { login })(Login);
+export default connect(mapStateToProps, { login })(Login);
