@@ -1,6 +1,6 @@
 # Easy Ticket Project
 
-
+An  easy to use IT Support system and knowledge base. Under construction.
 
 ## Project environment setup
 
@@ -8,21 +8,13 @@
 
 ### Installed Prerequisites:
 
+- <a href="https://www.python.org/">Python 3</a>
 
+- <a href="https://pip.pypa.io/en/stable/">Pip 3</a>
 
-\-   <a href="https://www.python.org/">Python 3</a>
+- <a href="https://nodejs.org/en/">Node.js</a>
 
-
-
-\-   <a href="https://pip.pypa.io/en/stable/">Pip 3</a>
-
-
-
-\-   <a href="https://nodejs.org/en/">Node.js</a>
-
-
-
-\-   <a href="https://www.npmjs.com/">npm</a>
+- <a href="https://www.npmjs.com/">npm</a>
 
 
 
@@ -47,6 +39,16 @@
 
 
 Please see requirements.txt for backend and package.json (as depedencies) files in the Root folder in production or in the backend/frontend folders in development.
+
+The back end has a Django Rest API while the front end has React. 
+
+It has a working Json web token authentication system supported by Django Rest using restframework-simplejwt and Djoser packages.
+
+Unfortunately the React
+
+
+
+### Project Planning
 
 
 
