@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { login } from '../actions/auth';
 
-
-const Login = () => {
+const Login = ({ login }) => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -17,7 +17,7 @@ const Login = () => {
         e.preventDefault();
 
         //login func
-        //login(email, password)
+        login(email, password)
     }
 
     // if user authenticated, redirect to home
@@ -33,7 +33,7 @@ const Login = () => {
                         className='form-control'
                         type='email'
                         placeholder='Email'
-                        name='emial'
+                        name='email'
                         value={email}
                         onChange={e => onChange(e)}
                         required
@@ -44,7 +44,7 @@ const Login = () => {
                         className='form-control'
                         type='password'
                         placeholder='Password'
-                        name='Password'
+                        name='password'
                         value={password}
                         onChange={e => onChange(e)}
                         minLength='8'
@@ -69,4 +69,4 @@ const mapStateToProps = state => ({
     //isAuthenticated
 })
 
-export default connect(null)(Login);
+export default connect(null, { login })(Login);

@@ -45,5 +45,9 @@ export default function (state = initialState, action) {
                 refresh: null,
                 user: null
             }
+        default:
+            return {
+                ...state
+            }
     }
 };
