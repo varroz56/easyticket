@@ -8,9 +8,9 @@ const EventDetails = () => {
                 <title>Easy Ticket Event Detail</title>
                 <meta name='description' content='Events Details' />
             </Helmet>
-            <div className="row">
-                <div className="col-12 col-md-6 col-lg-3">
-                    <table class="table table-striped table-sm table-dark">
+            <div className="row mb-0 pb-0">
+                <div className="col-12 col-md-6 col-lg-3 noside">
+                    <table class="table table-striped table-sm table-dark noside mb-0 pb-0">
                         <thead>
                             <tr>
                                 <th scope="col">Reference</th>
@@ -25,8 +25,8 @@ const EventDetails = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-12 col-md-6 col-lg-3">
-                    <table class="table table-striped table-sm table-dark">
+                <div className="col-12 col-md-6 col-lg-3 noside">
+                    <table class="table table-striped table-sm table-dark noside mb-0 pb-0">
                         <thead>
                             <tr>
                                 <th scope="col">Category</th>
@@ -39,8 +39,8 @@ const EventDetails = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-12 col-md-6 col-lg-3">
-                    <table class="table table-striped table-sm table-dark">
+                <div className="col-12 col-md-6 col-lg-3 noside">
+                    <table class="table table-striped table-sm table-dark noside">
                         <thead>
                             <tr>
                                 <th scope="col">Created On</th>
@@ -53,8 +53,8 @@ const EventDetails = () => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-12 col-md-6 col-lg-3">
-                    <table class="table table-striped table-sm table-dark">
+                <div className="col-12 col-md-6 col-lg-3 noside">
+                    <table class="table table-striped table-sm table-dark noside">
                         <thead>
                             <tr>
                                 <th scope="col">Created for</th>
@@ -68,9 +68,9 @@ const EventDetails = () => {
                     </table>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    <table class="table table-striped table-sm table-dark">
+            <div className="row pt-0 mt-0">
+                <div className="col noside pt-0 mt-0">
+                    <table class="table table-striped table-sm table-dark noside pt-0 mt-0">
                         <thead>
                             <tr>
                                 <th scope="col">Opening Notes</th>
