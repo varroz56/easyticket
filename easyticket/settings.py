@@ -242,3 +242,8 @@ STRIPE_PK = os.environ.get("STRIPE_PUBLISHABLE_KEY")
 
 # for testing stripe
 API_URL = os.environ.get("REACT_APP_API_URL")
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
